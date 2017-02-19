@@ -1,0 +1,19 @@
+<h1>SIGN UP</h1>
+
+<%= form_for @user do |f| %>
+
+<!-- code to display errors -->
+    <% if @user.errors.present? %>
+        <% @user.errors.messages.each do |key,value| %>
+        <ul>
+            <li><strong><%= key %>:</strong><%= value.to_sentence %></li> <!-- to sentence to concatenate the errors -->
+        </ul>
+    <% end %> <!-- end do loop -->
+    <% end %> <!-- end if -->
+
+
+    <%= f.text_field :email, placeholder: "Email"%>
+    <%= f.password_field :password, placeholder: "Password"%>
+    <%= f.password_field :password_confirmation, placeholder: "Confirm Password"%>
+    <%= f.submit %>
+<% end %> <!-- end form -->
