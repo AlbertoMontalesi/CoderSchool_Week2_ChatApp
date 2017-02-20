@@ -11,6 +11,11 @@ class ApplicationController < ActionController::Base
       end
   end
 
+  def require_user
+    unless current_user 
+      redirect_to new_session_path , flash: {success: "Please Log In"}
+    end
+  end
 
 
 end

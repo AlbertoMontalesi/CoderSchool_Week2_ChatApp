@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
 
+  get 'messages/incoming'
+
+  resources :messages do
+    collection do #we display many messages therefore use collection
+      get 'incoming'
+    end
+    member do #use member for the single message 
+      post 'mark_as_read'
+    end
+  end
+
+
+
+
   resources :sessions, only: [:new, :create]
   #get 'sessions/new', as: :login #alternatively  can use resources only: [:new, :create]
   #post 'sessions' => 'session#create', as: :submit_login 

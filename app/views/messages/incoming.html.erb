@@ -1,0 +1,26 @@
+<h1>Messages#incoming</h1>
+<p>Find me in app/views/messages/incoming.html.erb</p>
+<p> You have <%= @incoming_messages.size %> messages  </p>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>From</th>
+            <th>To</th>
+            <th>Subject</th>
+            <th>Body</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <% @incoming_messages.each do |message| %>
+                <td> <%= message.sender %> </td>
+                <td> <%= message.recipient %> </td>
+                <td> <%= message.subject %> </td>
+                <td> <%= message.body %> </td>     
+            <% end %>
+        </tr>    
+    </tbody>
+</table>

@@ -3,5 +3,11 @@ class User < ApplicationRecord
     has_secure_password  #method to load the brycpt gem 
     
 
-    
+    def incoming_messages
+        Message.where(recipient_id: id)
+    end
+
+    def to_s
+        email
+    end
 end
