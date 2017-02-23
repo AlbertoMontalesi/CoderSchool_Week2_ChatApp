@@ -5,4 +5,16 @@ class MessagesController < ApplicationController
   def incoming
     @incoming_messages = current_user.incoming_messages
   end
+
+  def new
+    @message = Message.new
+
+  end
+
+
+  private
+
+  def message_params
+    params.require(:message).permit(:sender_id, :recipient_id, :subject, :body)
+  end
 end
