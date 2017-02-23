@@ -1,8 +1,18 @@
-<h1>Log In</h1>
 
-<%= form_tag sessions_path do %>
-    <%= text_field_tag :email,params[:email], placeholder: "Email" %>
-    <%= password_field_tag :password,nil, placeholder: "Password" %>
-    <%= submit_tag "Log In" %>
-
-<% end %>
+<div class="row justify-content-center form-container">
+        <%= form_tag sessions_path do %>
+            <div class="col-xs-12">
+                 <h1>Log In</h1> 
+            </div>
+            <div class="col-xs-12">
+                    <%= text_field_tag :email,params[:email], placeholder: "Email" %>
+            </div>
+            <div class="col-xs-12">
+                <%= password_field_tag :password,nil, placeholder: "Password" %>
+            </div>
+            <div class="col-xs-12">
+                    <%= submit_tag "Log In" %>
+            </div>
+                  
+        <% end %>
+</div> <!-- end row -->

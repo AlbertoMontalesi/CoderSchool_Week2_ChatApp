@@ -10,24 +10,17 @@
 
   <body>
 
-  <div class='navbar'>
-      <% if current_user %>
-          Welcome back <%= current_user.email %>. 
-          <%= link_to 'Log Out',logout_path, method: 'delete' %>
-      <% else %>
-          <%= link_to 'Sign up', new_user_path %>
-      <%= link_to 'Sign in', new_session_path %>
-      <% end %>
-</div>
+  <%= render 'layouts/navbar'%>
       
-
-    <% if flash.any? %>  <!-- to display flash messages -->
-        <% flash.each do |key,value| %>
-        <div>
-          <%= value %>
-        </div>
+    <div class="container">
+        <% if flash.any? %>  <!-- to display flash messages -->
+            <% flash.each do |key,value| %>
+            <div>
+            <%= value %>
+            </div>
+            <% end %>
         <% end %>
-    <% end %>
-    <%= yield %>
+        <%= yield %>
+    </div>
   </body>
 </html>

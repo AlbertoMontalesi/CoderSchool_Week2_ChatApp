@@ -1,4 +1,27 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+
+<div class="row justify-content-center align-items-center homepage">
+
+
+    <div class="col-sm-6">
+        <h1>SmartChat</h1>
+        <p> The new way to connect with people </p>
+    
+    </div>
+    <div class="col-sm-2">
+        <p> Already a member? </p>
+    </div>
+    <div class="col-sm-2">
+        <button type="button" class="btn">
+        <%= link_to 'Log In', new_session_path %> 
+        </button>   
+    </div>
+    <div class="col-sm-2">
+        <button type="button" class="btn">
+            <%= link_to 'Register', new_user_path %> 
+        </button>
+    </div>
+    
+
+</div>  <!-- end row -->
 
 

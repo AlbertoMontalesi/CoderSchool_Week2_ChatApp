@@ -1,7 +1,17 @@
 @import 'bootstrap';
 
-@import "users"
-
+@import "users";
 
 
 // remember to style the box containing the flash message inside of application.html.erb
+
+//style the container of all forms
+.form-container * {
+    margin-top: 15px
+}
+
+
+.homepage {
+    height: 100vh;
+    
+}
