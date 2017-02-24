@@ -2,6 +2,16 @@ class MessagesController < ApplicationController
 
   before_action :require_user #if you use devise authenticate user will be already here
  
+  def create
+    @message = Message.new message_params
+    @message.sender = current_user
+      if @message.save
+        redirect_to incoming_messages_path
+      else
+        flash.now[:error] = @message.errors.full_messages.to_sentence
+        render new_message_path
+      end
+  end
 
   def incoming
     @incoming_messages = current_user.incoming_messages #defined in user
@@ -28,20 +38,12 @@ class MessagesController < ApplicationController
       end
   end
 
-  def create  #still not working 
-     @message = Message.new
-  if @message.save
-    redirect_to incoming_messages_path
-  else
-    render new_message_path
-    flash[:error] = "Message was not sent "
-  end
-  end
+  
 
 
   private
 
   def message_params
-    params.require(:message).permit(:sender_id, :recipient_id, :subject, :body)
+    params.require(:message).permit(:recipient_id, :subject, :body)
   end
 end

@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   end
 
 
+  resources :messages
+
 
 
   resources :sessions, only: [:new, :create]
