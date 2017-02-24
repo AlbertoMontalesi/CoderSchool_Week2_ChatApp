@@ -19,11 +19,11 @@
 
 
 .incoming-message {
-
+    background-color: blue;
      //generale class for the container of the message preview
 }
 
 .incoming-message-unread {
     // style it differently when the message is not read 
-
+    background-color: red;
 }

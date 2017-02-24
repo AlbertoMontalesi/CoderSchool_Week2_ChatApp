@@ -4,8 +4,11 @@ class MessagesController < ApplicationController
  
 
   def incoming
-    @incoming_messages = current_user.incoming_messages
+    @incoming_messages = current_user.incoming_messages #defined in user
+  end
 
+  def sent
+    @sent_messages = current_user.sent_messages
   end
 
   def new
@@ -13,11 +16,12 @@ class MessagesController < ApplicationController
   end
 
   def show #to revisit
-     @message = Message.where(recipient: current_user).find(params[:id])
+     @message = Message.find(params[:id])
+     ##@message = Message.find(params[:id]).where(recipient: current_user)
       if @message.recipient == current_user #if the user views the message we mark it as read
         if @message.read?
           redirect_to incoming_messages_path
-          flash[:success] = "You already read the message"
+          flash[:error] = "You already read the message"
         else
         @message.mark_as_read! #if the user didnt previously see the message we mark it as read now       
       end
@@ -30,7 +34,7 @@ class MessagesController < ApplicationController
     redirect_to incoming_messages_path
   else
     render new_message_path
-    flash[:success] = "Message was not sent "
+    flash[:error] = "Message was not sent "
   end
   end
 

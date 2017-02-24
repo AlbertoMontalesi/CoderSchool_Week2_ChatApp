@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   get 'messages/incoming'
-
+  get 'messages/sent'
 
   resources :messages do
     collection do #we display many messages therefore use collection
