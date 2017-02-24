@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:email, :password, :password_confirmation) #alternatively coul set to all instead of naming all the params
+        params.require(:user).permit(:name, :email, :password, :password_confirmation) #alternatively coul set to all instead of naming all the params
     end
 
 end
