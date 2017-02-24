@@ -1,0 +1,14 @@
+<% @sent_messages.each do |message| %>
+<div class="row">   
+     <div class="col-sm-12">
+            From <%= message.sender %> To <%= message.recipient %>  
+        </div>
+        <div class="col-sm-12">
+            <%= message.subject %>
+        </div>
+        <div class="col-sm-12">
+            <%= message.body %>
+        </div> 
+</div>
+       
+<% end %>

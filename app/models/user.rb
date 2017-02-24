@@ -8,7 +8,7 @@ class User < ApplicationRecord
     end
 
     def sent_messages #message we sent
-        Message.where(sender_id: id)
+        Message.where(sender_id: id).order(created_at: :desc)
     end
 
     def latest_incoming_messages(n)
