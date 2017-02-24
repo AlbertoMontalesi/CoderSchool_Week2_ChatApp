@@ -1,6 +1,18 @@
-<h1>all users </h1>  <!-- on this page we display all the users -->
+<h1> Users </h1> 
 
-<% @user.each do |u| %>
-    <%= u.email%>
+ <!-- on this page we display all the users -->
+<div class="row">
 
-<% end %>
+    <% @user.each do |u| %>
+        <div class="card">
+            <div class="card-block">
+                    <h4 class="card-title">  <%= u.email%></h4>
+                    <h6 class="card-subtitle mb-2 text-muted"> <%= link_to "Add Friend" %> </h6>            
+            </div>
+        </div>
+    <% end %>
+
+</div>
+
+
+

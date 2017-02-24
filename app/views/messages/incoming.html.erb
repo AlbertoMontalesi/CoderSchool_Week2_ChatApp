@@ -1,19 +1,22 @@
-<h1>Incoming Messages</h1>
-<p> You have <%= @incoming_messages.size %> messages  </p>
+
+    <div class="col-sm-12">
+        <h1>Incoming Messages</h1>
+    <p> You have <%= @incoming_messages.size %> messages  </p>
+
+    </div>
 
 
 <div class="row">
-    <div class="col-xs-12 col-sm-4">
+
+    <div class="col-12 col-sm-4">
         <%= link_to "New Message", new_message_path %>
     </div>
-     <div class="col-xs-12 col-sm-4">
+     <div class="col-12 col-sm-4">
         <%= link_to "Add Friends", users_path %>
      </div>
-     <div class="col-xs-12 col-sm-4">
+     <div class="col-12 col-sm-4">
         <%= link_to "Messages Sent", messages_sent_path %>
     </div>
-
-
 </div>
 
 
@@ -23,18 +26,20 @@
 
 
 <% @incoming_messages.each do |message| %>
-    <div class=" <%= message.read? ?  'row incoming-message' : ' row incoming-message-unread' %>" >
-        <div class="col-xs-12">
-            From <%= message.sender %> To <%= message.recipient %>  
-        </div>
-        <div class="col-xs-12">
-            <%= message.subject %>
-        </div>
-        <div class="col-xs-12">
-            <%= message.body %>
-        </div>    
-       <%= link_to 'show more ', message_path(id: message.id) %>
-    </div>
-
+     <div class="<%= message.read? ?  'card incoming-message' : ' card incoming-message-unread' %>" >
+            <div class="card-block">
+                     <h4 class="card-title">  <%= message.subject %> </h4>
+                     <h6 class="card-subtitle mb-2 text-muted">  Sent By <%= message.sender %> Read At <%= message.read_at.strftime("%T %FT")%></h6>
+                     <h6 class="card-subtitle mb-2 text-muted"> <%= link_to 'Show more ', message_path(id: message.id), class:'btn'%> </h6>
+            </div>
+     </div>
+                
 
 <% end %>
+
+
+
+
+
+
+

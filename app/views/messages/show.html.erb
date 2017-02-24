@@ -1,7 +1,15 @@
 
-<h1>here only the clicked message will be displayed </h1>
-<%= link_to "back", incoming_messages_path %>
-<%= @message.sender%>
-<%= @message.recipient %>
-<%= @message.subject %>
-<%= @message.body %>
+<h1>Remember you can only read the message once!</h1>
+
+
+<div class="card">
+    <div class="card-block">
+        <h4 class="card-title">  <%= @message.subject %> </h4>
+         <h6 class="card-subtitle mb-2 text-muted"> From <%= @message.sender%>  Read At <%= @message.read_at.strftime("%T %FT")%></h6>
+        <p class="card-text"> <%= @message.body %> </p>
+    
+    </div>
+</div>
+
+
+<%= link_to "back", incoming_messages_path, class:'btn' %>

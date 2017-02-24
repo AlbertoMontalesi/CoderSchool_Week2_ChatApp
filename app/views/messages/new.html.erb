@@ -1,19 +1,54 @@
-<h1>New Message</h1>
 
+<div class="full-height">
+
+
+
+
+
+
+<div class="row justify-content-center">
+        <div class="col-sm-12">
+            <h1>New Message</h1>
+        
+        </div>
 
 
 <%= form_for @message, method: 'post'  do |m| %>
+    <div class="col-sm-12">
+        <%= m.label :recipient_id %>   <!-- i am using id and not email, so in the form i need to add the number of the user -->
+    </div>
+    <div class="col-sm-12">
+        <%= m.text_field :recipient_id %>
+    </div>
+    <div class="col-sm-12">
+        <%= m.label :subject %>
+    </div>
+    <div class="col-sm-12">
+        <%= m.text_field :subject%>
+    </div>
+    <div class="col-sm-12">
+        <%= m.label :body %>
+    </div>
+    <div class="col-sm-12">
+        <%= m.text_field :body%>
+    </div>
+    <div class="col-sm-12">
+        <%= m.submit class:'form_submit'%>
+    </div>
 
-<!-- i am using id and not email, so in the form i need to add the number of the user -->
-    <%= m.label :recipient_id %>
-    <%= m.select :recipient_id %> 
-    <%= m.text_field :recipient_id %>
-    <%= m.label :subject %>
-    <%= m.text_field :subject%>
-    <%= m.label :body %>
-    <%= m.text_field :body%>
-    <%= m.submit %>
+</div>
+    
+    
+    
+   
+    
 <% end %>
+
+
+
+</div>
+
+
 
 
 
