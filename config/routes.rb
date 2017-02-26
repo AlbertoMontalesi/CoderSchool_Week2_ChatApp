@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :messages
 
-
+  resources :friendships
 
   resources :sessions, only: [:new, :create]
   #get 'sessions/new', as: :login #alternatively  can use resources only: [:new, :create]

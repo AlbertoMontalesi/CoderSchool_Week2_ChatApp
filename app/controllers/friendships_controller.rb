@@ -5,10 +5,10 @@ class FriendshipsController < ApplicationController
     @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
     if @friendship.save
         flash[:notice] = "Added friend."
-        redirect_to incoming_messages
+        redirect_to incoming_messages_path
     else
         flash[:error] = "Unable to add friend."
-        redirect_to incoming_messages
+        redirect_to incoming_messages_path
     end
     end
 

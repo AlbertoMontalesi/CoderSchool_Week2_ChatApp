@@ -2,6 +2,10 @@ class User < ApplicationRecord
     validates :email, presence: true, uniqueness: {case_sensitive:false} #user name is not  case_sensitive
     has_secure_password  #method to load the brycpt gem 
     
+    has_many :friendships
+    has_many :friends, :through => :friendships
+    has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+    has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
     def incoming_messages #message we received
         Message.where(recipient_id: id).order(created_at: :desc) #to display them in descending order 
