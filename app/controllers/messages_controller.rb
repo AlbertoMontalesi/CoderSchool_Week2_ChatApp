@@ -6,6 +6,7 @@ class MessagesController < ApplicationController
     @message = Message.new message_params
     @message.sender = current_user
       if @message.save
+        flash.now[:success] = 'Message Sent'
         redirect_to incoming_messages_path
       else
         flash.now[:error] = @message.errors.full_messages.to_sentence

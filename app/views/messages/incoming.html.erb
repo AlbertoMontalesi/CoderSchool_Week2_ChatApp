@@ -31,7 +31,7 @@
      <div class="<%= message.read? ?  'card incoming-message' : ' card incoming-message-unread' %>" >
             <div class="card-block">
                      <h4 class="card-title">  <%= message.subject %> </h4>
-                     <h6 class="card-subtitle mb-2 text-muted">  Sent By <%= message.sender %> Read At <%= message.read_at.strftime("%T %FT")%></h6>
+                     <h6 class="card-subtitle mb-2 text-muted">  Sent By <%= message.sender %> Read At <%= message.read_at%></h6>
                      <h6 class="card-subtitle mb-2 text-muted"> <%= link_to 'Show more ', message_path(id: message.id), class:'btn'%> </h6>
             </div>
      </div>
