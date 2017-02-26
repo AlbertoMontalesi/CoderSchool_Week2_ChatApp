@@ -1,14 +1,46 @@
 <h1> Manage friends </h1>
 
+
+
+<h2> Friends </h2>
+<div class="row">
+
+    <% current_user.friendships.each do |friendship| %>
+        <div class="card">
+            <div class="card-block">
+                    <div class="card-title">
+                        <%= friendship.friend.email %>
+                    </div>
+                    <div class="card-subtitle">
+                        <%= link_to "Remove Friend", friendship, :method => :delete %>
+                    </div>
+            </div>
+        </div>
+    <% end %>
+</div>
+
+<h2>People that added you as friend</h2>
+<div class="row">
+
+    <% current_user.inverse_friends.each do |user| %>
+        <p> <%= user.email %> </p>
+    <% end %>
+</div>
+
+
+
 <h2> Add Friends</h2>
 <div class="row">
+
     <% @user.each do |u| %>
+   
         <div class="card">
             <div class="card-block">
                     <h4 class="card-title">  <%= u.email%></h4>
-                    <h6 class="card-subtitle mb-2 text-muted"> <%= link_to "Add Friend", friendships_path(:friend_id => u), :method => :post %> </h6>    
+                    <h6 class="card-subtitle mb-2 text-muted"> <%= link_to "Add Friend", friendships_path(:friend_id => u), :method => :post %> </h6> 
             </div>
         </div>
+   
     <% end %>
 
 </div>
