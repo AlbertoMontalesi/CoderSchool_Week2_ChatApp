@@ -1,11 +1,12 @@
-
+<h1>Messages Sent </h1>
  
+ <h2>You sent <%= @sent_messages.size %> messages </h2>
 <% @sent_messages.each do |message| %>
     <div class="card">
         <div class="card-block">
             <h4 class="card-title"> <%= message.subject %> </h4>
                 <h6 class="card-subtitle mb-2 text-muted"> Sent by <%= message.sender %> At <%= message.created_at.strftime("%T %FT") %> </h6>
-                <h6 class="card-subtitle mb-2 text-muted">Read At <%= message.read_at.strftime("%T %FT")%></h6>
+                <h6 class="card-subtitle mb-2 text-muted"><%= message.read_at ? message.read_at : 'unread' %> </h6> <!-- need to add string Read At -->
     </div>
         </div>     
 <% end %>

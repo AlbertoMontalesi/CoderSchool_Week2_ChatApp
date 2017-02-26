@@ -19,6 +19,15 @@ a, a:hover {
     text-decoration: none !important;
 }
 
+//CONTAINER FOR HOME @page
+.homepage {
+    padding-top: 15%;
+}
+.homepage h1 {
+    text-align: left;
+}
+
+
 
 //style the container of all forms
 .form-container * {
@@ -32,10 +41,8 @@ a, a:hover {
 
 
 
-
-
 .incoming-message{
-     //generale class for the container of the message preview
+     //general class for the container of the message preview
 }
 
 .incoming-message-unread {

@@ -9,7 +9,7 @@
         <div class="card">
             <div class="card-block">
                     <div class="card-title">
-                        <%= friendship.friend.email %>
+                        <%= friendship.friend.name ? friendship.friend.name : friendship.friend.email %>
                     </div>
                     <div class="card-subtitle">
                         <%= link_to "Remove Friend", friendship, :method => :delete %>
@@ -21,9 +21,21 @@
 
 <h2>People that added you as friend</h2>
 <div class="row">
-
     <% current_user.inverse_friends.each do |user| %>
-        <p> <%= user.email %> </p>
+    <div class="card">
+        <div class="card-block">
+            <div class="card-title">
+                <%= user.name ? user.name : user.email %>
+            </div>
+            <div class="card-subtitle">
+                <% if current_user.friend_ids.include?  user.id %>
+                    <%= link_to "Remove Friend", friendships_path(:friend_id => user.id), :method => :delete %>
+                <% else %>
+                    <%= link_to "Add Friend", friendships_path(:friend_id => user.id), :method => :post %>
+                <% end %>
+            </div>
+        </div>
+    </div>
     <% end %>
 </div>
 
@@ -31,11 +43,11 @@
 
 <h2> Add Friends</h2>
 <div class="row">
-    <% @user.each do |u| %>
+    <% @user_not_friend.each do |u| %>
    
         <div class="card">
             <div class="card-block">
-                    <h4 class="card-title">  <%= u.email%></h4>
+                    <h4 class="card-title">  <%= u.name ? u.name : u.email%></h4> <!-- if the user has a name display a name otherwise display email -->
                     <h6 class="card-subtitle mb-2 text-muted"> <%= link_to "Add Friend", friendships_path(:friend_id => u), :method => :post %> </h6> 
             </div>
         </div>

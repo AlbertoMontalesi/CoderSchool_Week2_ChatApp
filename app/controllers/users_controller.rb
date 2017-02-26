@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     end
     def index
         @user = User.all.where.not(id: current_user.id) #display all users but me 
+        @user_not_friend = User.all.where.not(id: current_user.friend_ids) & User.all.where.not(id: current_user.id)
     end
 
 
@@ -13,9 +14,11 @@ class UsersController < ApplicationController
         @user = User.new user_params
         if @user.save  #if it saves we flash a message and redirect to the home
             flash[:success] = "User created successfully"
-            redirect_to root_path
-            #OPTIONAL LOG IN STRAIGHT AWAY AFTER THE USER SIGN IN
-            #SEND AN EMAIL TO THE USER
+            session[:user_id] = @user.id  #LOG IN STRAIGHT AWAY AFTER THE USER SIGN IN
+            redirect_to incoming_messages_path
+
+            
+            #optional SEND AN EMAIL TO THE USER
         else 
             render 'new' #render again the user creation page in case of failure during the save 
         end
