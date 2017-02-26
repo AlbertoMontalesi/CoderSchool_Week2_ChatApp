@@ -5,7 +5,7 @@ class UsersController < ApplicationController
         @user = User.new
     end
     def index
-        @user = User.all
+        @user = User.all.where.not(id: current_user.id) #display all users but me 
     end
 
 
